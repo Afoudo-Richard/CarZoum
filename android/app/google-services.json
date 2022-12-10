@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "563669347082",
+    "project_id": "carzoum",
+    "storage_bucket": "carzoum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563669347082:android:c1cdeac8bd018ac635e8f3",
+        "android_client_info": {
+          "package_name": "com.carzoum.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563669347082-8r1sofuvhtq4ra9680vr24t976c7ikkb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdQvesgzFmFJ78SYUQOBPpqnVNogV4J3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563669347082-8r1sofuvhtq4ra9680vr24t976c7ikkb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "563669347082-5b9b4rfqufsab0h42ml3e61kset29h9v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carzoum.arctikq"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563669347082:android:29df86c8ea70b51a35e8f3",
+        "android_client_info": {
+          "package_name": "com.carzoum.arctikq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563669347082-8r1sofuvhtq4ra9680vr24t976c7ikkb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdQvesgzFmFJ78SYUQOBPpqnVNogV4J3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563669347082-8r1sofuvhtq4ra9680vr24t976c7ikkb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "563669347082-5b9b4rfqufsab0h42ml3e61kset29h9v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carzoum.arctikq"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563669347082:android:e1d8e0e1c635bbc335e8f3",
+        "android_client_info": {
+          "package_name": "com.example.cars"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563669347082-8r1sofuvhtq4ra9680vr24t976c7ikkb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdQvesgzFmFJ78SYUQOBPpqnVNogV4J3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563669347082-8r1sofuvhtq4ra9680vr24t976c7ikkb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "563669347082-5b9b4rfqufsab0h42ml3e61kset29h9v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carzoum.arctikq"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

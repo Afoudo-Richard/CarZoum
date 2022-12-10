@@ -1,0 +1,16 @@
+export './src/confirm_password.dart';
+export './src/email.dart';
+export './src/firstname.dart';
+export './src/lastname.dart';
+export './src/login_password.dart';
+export './src/password.dart';
+export './src/phone.dart';
+export './src/username.dart';
+export './src/gender.dart';
+export './src/vehicle_location.dart';
+export './src/vehicle_mileage.dart';
+export './src/vehicle_price.dart';
+export './src/vehicle_description.dart';
+export './src/store_about.dart';
+export './src/store_location.dart';
+export './src/store_name.dart';
