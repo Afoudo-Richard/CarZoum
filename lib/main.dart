@@ -1,5 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:carzoum/carzoum.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -8,22 +10,26 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'package:carzoum/app.dart';
 import 'package:carzoum/src/data/data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  requestForNotificationPermission();
+  initializeAwesomeNotification();
+
+  FCM.setNotifications();
 
   // use for internationalization checkout: https://pub.dev/packages/easy_localization
   await EasyLocalization.ensureInitialized();
-  initializeAwesomeNotification();
   await registerParseServer();
-  requestForNotificationPermission();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   final storage = await HydratedStorage.build(

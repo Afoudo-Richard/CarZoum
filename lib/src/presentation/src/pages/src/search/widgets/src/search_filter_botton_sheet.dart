@@ -159,6 +159,7 @@ class _FilterState extends State<Filter> {
                               return AllBrands(
                                 isSearch: true,
                                 onBrandItemTap: (brand) {
+                                  print(brand);
                                   BlocProvider.of<SearchFilterBloc>(context)
                                       .add(
                                     SearchFilterVehicleBrandChanged(brand),
@@ -193,22 +194,26 @@ class _FilterState extends State<Filter> {
                     builder: (context, state) {
                       return GestureDetector(
                         onTap: () {
-                          showModalBottomSheet(
-                            barrierColor: primaryColor.withOpacity(0.7),
-                            isScrollControlled: true,
-                            context: context,
-                            builder: (ctx) {
-                              return AllBrandModels(
-                                onModelItemTap: (model) {
-                                  BlocProvider.of<SearchFilterBloc>(context)
-                                      .add(
-                                    SearchFilterVehicleModelChanged(model),
-                                  );
-                                },
-                                selectedItem: state.model,
-                              );
-                            },
-                          );
+                          state.brand != null
+                              ? showModalBottomSheet(
+                                  barrierColor: primaryColor.withOpacity(0.7),
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (ctx) {
+                                    return AllBrandModels(
+                                      onModelItemTap: (model) {
+                                        BlocProvider.of<SearchFilterBloc>(
+                                                context)
+                                            .add(
+                                          SearchFilterVehicleModelChanged(
+                                              model),
+                                        );
+                                      },
+                                      selectedItem: state.model,
+                                    );
+                                  },
+                                )
+                              : print("Select brand model");
                         },
                         child: CustomInput(
                           inputText:

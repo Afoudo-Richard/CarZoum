@@ -12,8 +12,8 @@ class BrandsFetched extends ListBrandsEvent {
 }
 
 class BrandSelected extends ListBrandsEvent {
-  final Brand brand;
-  BrandSelected({required this.brand});
+  final Brand? brand;
+  BrandSelected({this.brand});
 }
 
 class SearchBrandChanged extends ListBrandsEvent {

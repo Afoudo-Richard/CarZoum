@@ -1,6 +1,7 @@
 import 'package:carzoum/carzoum.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ChatDialog extends StatelessWidget {
   const ChatDialog({Key? key}) : super(key: key);
@@ -31,6 +32,22 @@ class ChatDialog extends StatelessWidget {
                   ),
                 ),
                 6.h.ph,
+                GestureDetector(
+                  child: Text('WhatsApp'),
+                  onTap: () async {
+                    String number = "+237672367020";
+                    String message = "Is this vehicle still available?";
+                    String url = 'whatsapp://send?phone=$number&text=$message';
+
+                    Uri uri = Uri.parse(url);
+
+                    await canLaunchUrl(
+                      uri,
+                    )
+                        ? launchUrl(uri)
+                        : debugPrint("Can't open whatsapp");
+                  },
+                ),
               ],
             ),
           ),

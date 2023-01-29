@@ -305,6 +305,7 @@ class SearchFilterBloc extends Bloc<SearchFilterEvent, SearchFilterState> {
         'fuel_type',
         'transmission_type',
       ])
+      ..whereEqualTo("status", AdvertStatus.active.name)
       ..setLimit(limit);
     if (state.brand != null) query.whereEqualTo('brand', state.brand);
     if (state.model != null) query.whereEqualTo('model', state.model);

@@ -36,5 +36,6 @@ export './src/login_or_sign_up.dart';
 export './src/all_languages.dart';
 export './src/all_gender.dart';
 export './src/app_logo.dart';
-export 'src/fetch_empty.dart';
-export 'src/fetch_error.dart';
+export './src/fetch_empty.dart';
+export './src/fetch_error.dart';
+export './src/update_store_info.dart';

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:carzoum/carzoum.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
@@ -54,11 +55,20 @@ class MyAdvertBloc extends Bloc<MyAdvertEvent, MyAdvertState> {
           event.vehicle,
           event.advertsVerificationStatus,
         );
+
         emit(
           state.copyWith(
             advertAcceptStatus: AdvertAcceptStatus.success,
           ),
         );
+
+        try {
+          User user = userBloc.state.user!;
+          await _sendUserNotification(
+              user.objectId!, "Your advert has been accepted");
+        } catch (e) {
+          debugPrint("Errrrooooooooooorr @@@@@@@@@@@@@@##########");
+        }
       } else {
         emit(
           state.copyWith(
@@ -97,6 +107,23 @@ class MyAdvertBloc extends Bloc<MyAdvertEvent, MyAdvertState> {
           currentVehicle: null,
         ),
       );
+    }
+  }
+
+  Future _sendUserNotification(String id, String message) async {
+    final ParseCloudFunction function =
+        ParseCloudFunction('sendPushToUserAboutAdStatus');
+
+    final Map<String, dynamic> params = <String, dynamic>{
+      'id': id,
+      'message': message,
+    };
+    final ParseResponse parseResponse =
+        await function.executeObjectFunction<ParseObject>(parameters: params);
+
+    // ended here
+    if (parseResponse.success && parseResponse.result != null) {
+      print(parseResponse.result);
     }
   }
 

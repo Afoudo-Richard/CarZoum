@@ -23,18 +23,24 @@ class SellPage extends StatelessWidget {
                   title: trans(context)!.add_vehicle,
                   centerTitle: false,
                   actions: [
-                    TextButton(
-                      onPressed: () {
-                        BlocProvider.of<SellBloc>(context)
-                            .add(VehicleSelectionCleared());
+                    BlocBuilder<SellBloc, SellState>(
+                      builder: (context, state) {
+                        return state.pickedPhotos.isNotEmpty
+                            ? TextButton(
+                                onPressed: () {
+                                  BlocProvider.of<SellBloc>(context)
+                                      .add(VehicleSelectionCleared());
+                                },
+                                child: Text(
+                                  trans(context)!.clear,
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 12.sp,
+                                  ),
+                                ),
+                              )
+                            : const SizedBox.shrink();
                       },
-                      child: Text(
-                        trans(context)!.clear,
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 12.sp,
-                        ),
-                      ),
                     ),
                   ],
                   automaticallyImplyLeading: false,

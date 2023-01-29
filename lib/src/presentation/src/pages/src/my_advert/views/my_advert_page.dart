@@ -124,7 +124,24 @@ class MyAdvertPage extends StatelessWidget {
                         itemCount: 10,
                       );
                     case MyAdvertFetchStatus.success:
-                      return const MyAdvertSuccessView();
+                      // return const MyAdvertSuccessView();
+                      return VehicleListing(
+                        showVehicleItemActivationStatusBar: true,
+                        isScrollable: true,
+                        vehicles: state.vehicles,
+                        hasReachedMax: state.hasReachedMax,
+                        onScroll: () {
+                          BlocProvider.of<MyAdvertBloc>(context).add(
+                            const MyAdvertsCategoryFetched(),
+                          );
+                        },
+                        paddinng: EdgeInsets.only(
+                          left: paddingSize,
+                          right: paddingSize,
+                          top: 10.sp,
+                          bottom: 30.sp,
+                        ),
+                      );
                     case MyAdvertFetchStatus.failure:
                       return FetchError(
                         onPressedTryAgain: () {

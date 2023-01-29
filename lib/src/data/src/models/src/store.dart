@@ -26,6 +26,9 @@ class Store extends ParseObject with EquatableMixin implements ParseCloneable {
   String? get about => get<String?>('about');
   set about(String? value) => set<String?>('about', value);
 
+  String? get whatsappPhone => get<String?>('whatsappPhone');
+  set whatsappPhone(String? value) => set<String?>('whatsappPhone', value);
+
   User? get owner => get('owner');
   set owner(User? value) => set('owner', value);
 
@@ -34,6 +37,7 @@ class Store extends ParseObject with EquatableMixin implements ParseCloneable {
       'objectId': objectId,
       'name': name,
       'location': location,
+      'whatsappPhone': whatsappPhone,
       'about': about,
     };
   }
@@ -43,6 +47,7 @@ class Store extends ParseObject with EquatableMixin implements ParseCloneable {
         name,
         location,
         profileImage,
+        whatsappPhone,
         about,
       ];
 
@@ -51,7 +56,9 @@ class Store extends ParseObject with EquatableMixin implements ParseCloneable {
       ..objectId = map['objectId']
       ..name = map['name'] != null ? map['name'] as String : null
       ..location = map['location'] != null ? map['location'] as String : null
-      ..about = map['about'] != null ? map['about'] as String : null;
+      ..about = map['about'] != null ? map['about'] as String : null
+      ..whatsappPhone =
+          map['whatsappPhone'] != null ? map['whatsappPhone'] as String : null;
 
     return store;
   }

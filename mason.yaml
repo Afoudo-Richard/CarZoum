@@ -1,0 +1,14 @@
+bricks:
+  hello: 0.1.0+1
+  widget:
+    git:
+      url: "https://github.com/felangel/mason"
+      path: bricks/widget
+      ref: 1f9ffefa02045f9729addf205a176d263cd5de0b
+  page: ^1.3.0
+  example:
+    path: example
+  test_mason:
+    path: test_mason
+  app_page:
+    path: app_page

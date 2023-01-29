@@ -17,3 +17,4 @@ export './src/user/bloc/user_bloc.dart';
 export './src/seller_info/bloc/seller_info_bloc.dart';
 export './src/favorite/bloc/favourite_bloc.dart';
 export './src/my_advert/bloc/my_advert_bloc.dart';
+export './src/vehicle_detail/bloc/vehicle_detail_bloc.dart';

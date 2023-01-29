@@ -81,12 +81,12 @@ class AllBrands extends StatelessWidget {
                               isSearch
                                   ? (index == 0
                                       ? onBrandItemTap!(null)
-                                      : onBrandItemTap!(
-                                          state.brandsCopy[index - 1]))
-                                  : onBrandItemTap!(state.brandsCopy[index]);
+                                      : onBrandItemTap!(brand))
+                                  : onBrandItemTap!(brand);
+
                               BlocProvider.of<ListBrandsBloc>(context).add(
                                 BrandSelected(
-                                  brand: state.brandsCopy[index],
+                                  brand: brand,
                                 ),
                               );
 

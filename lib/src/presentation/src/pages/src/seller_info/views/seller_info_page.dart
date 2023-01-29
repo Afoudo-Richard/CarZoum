@@ -110,12 +110,40 @@ class SellerInfoPage extends StatelessWidget {
                       switch (state.sellerInfoListVehiclesStatus) {
                         case SellerInfoListVehiclesStatus.initial:
                         case SellerInfoListVehiclesStatus.refresh:
-                          return LoadingIndicator();
+                          return VehiclesLoading(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 3.h,
+                              horizontal: paddingSize,
+                            ),
+                            itemCount: 10,
+                          );
 
                         case SellerInfoListVehiclesStatus.failure:
-                          return Text("Failed to fetch data");
+                          return FetchError(
+                            onPressedTryAgain: () {
+                              BlocProvider.of<SellerInfoBloc>(context).add(
+                                SellerInfoVehiclesFetched(refresh: true),
+                              );
+                            },
+                          );
                         case SellerInfoListVehiclesStatus.success:
-                          return const SellerInfoVehicles();
+                          // return const SellerInfoVehicles();
+                          return VehicleListing(
+                            isScrollable: true,
+                            vehicles: state.vehicles,
+                            hasReachedMax: state.hasReachedMax,
+                            onScroll: () {
+                              BlocProvider.of<SellerInfoBloc>(context).add(
+                                SellerInfoVehiclesFetched(),
+                              );
+                            },
+                            paddinng: EdgeInsets.only(
+                              left: paddingSize,
+                              right: paddingSize,
+                              top: 10.sp,
+                              bottom: 30.sp,
+                            ),
+                          );
                       }
                     },
                   ),

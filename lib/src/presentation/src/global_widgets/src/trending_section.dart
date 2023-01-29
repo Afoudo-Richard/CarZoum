@@ -28,7 +28,33 @@ class TrendingSection extends StatelessWidget {
           ),
         ),
         2.h.ph,
-        const VehicleListing(),
+        BlocBuilder<ListVehiclesBloc, ListVehiclesState>(
+          builder: (context, state) {
+            switch (state.listVehiclesStatus) {
+              case ListVehiclesStatus.initial:
+              case ListVehiclesStatus.refresh:
+                return const VehiclesLoading();
+
+              case ListVehiclesStatus.failure:
+                return FetchError(
+                  onPressedTryAgain: () {
+                    BlocProvider.of<ListVehiclesBloc>(context).add(
+                      VehiclesFetched(refresh: true),
+                    );
+                  },
+                );
+              case ListVehiclesStatus.success:
+                return VehicleListing(
+                  vehicles: state.vehicles,
+                  onScroll: () {
+                    BlocProvider.of<ListVehiclesBloc>(context)
+                        .add(VehiclesFetched());
+                  },
+                  hasReachedMax: state.hasReachedMax,
+                );
+            }
+          },
+        ),
       ],
     );
   }

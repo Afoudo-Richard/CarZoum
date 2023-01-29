@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:carzoum/carzoum.dart';
 // import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -72,6 +73,22 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final userStore = await getUserStore(user);
 
         user.store = userStore;
+
+        final fcmToken = await FirebaseMessaging.instance.getToken();
+
+        if (user.devices!.where((element) => element == fcmToken).isEmpty &&
+            fcmToken != null &&
+            user.devices != null) {
+          /// Device is empty create a new remote device
+
+          final deviceName = await DeviceHelper.platformName();
+          String firebaseCMToken = fcmToken;
+
+          /// update user devices with new device
+          // user.("devices", [firebaseCMToken]);
+          user.devices = List.of(user.devices!)..add(firebaseCMToken);
+          final response = await user.save();
+        }
 
         authenticationBloc.add(
           const AuthenticationChanged(

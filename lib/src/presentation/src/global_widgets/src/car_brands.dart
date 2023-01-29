@@ -6,6 +6,23 @@ import 'package:carzoum/carzoum.dart';
 class CarBrands extends StatelessWidget {
   const CarBrands({super.key});
 
+  void carBrandTap(BuildContext context, Brand? brand) {
+    BlocProvider.of<AppBottomNavigationBarBloc>(context).add(
+      AppBottomNavigationBarChanged(activePage: const SearchPage()),
+    );
+    BlocProvider.of<ListBrandsBloc>(context).add(
+      BrandSelected(
+        brand: brand,
+      ),
+    );
+    BlocProvider.of<SearchFilterBloc>(context).add(
+      SearchFilterVehicleBrandChanged(brand),
+    );
+    BlocProvider.of<SearchFilterBloc>(context).add(
+      SearchFilterSubmitted(refresh: true),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ListBrandsBloc, ListBrandsState>(
@@ -25,17 +42,7 @@ class CarBrands extends StatelessWidget {
                       color: Colors.pink,
                       onTap: () {
                         // Navigator.push(context, MapLocationPage.route());
-                        BlocProvider.of<AppBottomNavigationBarBloc>(context)
-                            .add(
-                          AppBottomNavigationBarChanged(
-                              activePage: const SearchPage()),
-                        );
-                        BlocProvider.of<SearchFilterBloc>(context).add(
-                          SearchFilterVehicleBrandChanged(brand),
-                        );
-                        BlocProvider.of<SearchFilterBloc>(context).add(
-                          SearchFilterSubmitted(refresh: true),
-                        );
+                        carBrandTap(context, brand);
                       },
                     );
                   })
@@ -95,24 +102,7 @@ class CarBrands extends StatelessWidget {
                                           // BlocProvider.of<SellBloc>(context).add(
                                           //   VehicleBrandChanged(brand),
                                           // );
-                                          BlocProvider.of<
-                                                      AppBottomNavigationBarBloc>(
-                                                  context)
-                                              .add(
-                                            AppBottomNavigationBarChanged(
-                                                activePage: const SearchPage()),
-                                          );
-                                          BlocProvider.of<SearchFilterBloc>(
-                                                  context)
-                                              .add(
-                                            SearchFilterVehicleBrandChanged(
-                                                brand),
-                                          );
-                                          BlocProvider.of<SearchFilterBloc>(
-                                                  context)
-                                              .add(
-                                            SearchFilterSubmitted(),
-                                          );
+                                          carBrandTap(context, brand);
                                         },
                                         selectedItem: state.brand,
                                       );

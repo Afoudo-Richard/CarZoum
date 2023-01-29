@@ -15,16 +15,24 @@ class FavouritesPage extends StatelessWidget {
       appBar: appBar(
         title: "Favourites",
         actions: [
-          TextButton(
-              onPressed: () {
-                BlocProvider.of<FavouriteBloc>(context).add(ClearedFavourite());
-              },
-              child: Text(
-                trans(context)!.clear,
-                style: TextStyle(
-                  color: Colors.red,
-                ),
-              )),
+          BlocBuilder<FavouriteBloc, FavouriteState>(
+            builder: (context, state) {
+              return state.vehicles.isNotEmpty
+                  ? TextButton(
+                      onPressed: () {
+                        BlocProvider.of<FavouriteBloc>(context)
+                            .add(ClearedFavourite());
+                      },
+                      child: Text(
+                        trans(context)!.clear,
+                        style: const TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
+                    )
+                  : const SizedBox.shrink();
+            },
+          ),
         ],
         automaticallyImplyLeading: false,
       ),

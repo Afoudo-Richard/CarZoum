@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:carzoum/carzoum.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -103,6 +104,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       });
 
                       _showWelcomeMessage();
+                    },
+                  ),
+                  ProfileUserItem(
+                    iconContainerColor: Colors.blue,
+                    icon: Icons.person,
+                    title: 'Send push notification',
+                    onTap: () async {
+                      final ParseCloudFunction function =
+                          ParseCloudFunction('sendPushFromApp');
+                      final ParseResponse parseResponse =
+                          await function.execute();
+                      if (parseResponse.success &&
+                          parseResponse.result != null) {
+                        print(parseResponse.result);
+                      }
                     },
                   ),
                 ],

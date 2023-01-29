@@ -14,3 +14,4 @@ export './src/vehicle_description.dart';
 export './src/store_about.dart';
 export './src/store_location.dart';
 export './src/store_name.dart';
+export './src/store_phone.dart';

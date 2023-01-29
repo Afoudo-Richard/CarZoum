@@ -40,6 +40,9 @@ class User extends ParseUser with EquatableMixin implements ParseCloneable {
   bool get isAdmin => get<bool?>('is_admin') ?? false;
   set isAdmin(bool value) => set<bool?>('is_admin', value);
 
+  List<dynamic>? get devices => get('devices');
+  set devices(List<dynamic>? value) => set('devices', value);
+
   @override
   List<Object?> get props => [
         firstname,
@@ -50,6 +53,7 @@ class User extends ParseUser with EquatableMixin implements ParseCloneable {
         profileImage,
         store,
         isAdmin,
+        devices,
       ];
 
   Map<String, dynamic> toMap() {
@@ -64,6 +68,7 @@ class User extends ParseUser with EquatableMixin implements ParseCloneable {
       'sessionToken': sessionToken,
       'store': store?.toMap(),
       'isAdmin': isAdmin,
+      'devices': devices,
     };
   }
 
@@ -82,7 +87,9 @@ class User extends ParseUser with EquatableMixin implements ParseCloneable {
       ..store = map['store'] != null
           ? Store.fromMap(map['store'] as Map<String, dynamic>)
           : null
-      ..isAdmin = map['isAdmin'] as bool;
+      ..isAdmin = map['isAdmin'] as bool
+      ..devices =
+          map['devices'] != null ? map['devices'] as List<dynamic> : null;
 
     return user;
   }

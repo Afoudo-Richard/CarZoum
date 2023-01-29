@@ -174,6 +174,33 @@ class StoreDetailPage extends StatelessWidget {
                             );
                           },
                         ),
+                        BlocBuilder<StoreDetailsBloc, StoreDetailsState>(
+                          builder: (context, state) {
+                            return Column(
+                              children: [
+                                1.h.ph,
+                                CustomInput(
+                                  inputInitialValue:
+                                      authState.user?.store?.about,
+                                  label: "Phone",
+                                  inputHintText: "Enter business phone number",
+                                  backgroundColor:
+                                      Colors.white.withOpacity(0.7),
+                                  labelTextStyle: TextStyle(
+                                    color: primaryColor,
+                                  ),
+                                  inputErrorText: state.storeAbout.invalid
+                                      ? state.storeAbout.error
+                                      : null,
+                                  onChanged: (value) {
+                                    BlocProvider.of<StoreDetailsBloc>(context)
+                                        .add(StoreAboutChanged(value));
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        ),
                         3.h.ph,
                         BlocBuilder<StoreDetailsBloc, StoreDetailsState>(
                           builder: (context, state) {

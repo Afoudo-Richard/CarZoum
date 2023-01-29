@@ -35,7 +35,23 @@ class SearchPage extends StatelessWidget {
                   itemCount: 10,
                 );
               case SearchFilterStatus.success:
-                return const SuccessView();
+                // return const SuccessView();
+                return VehicleListing(
+                  isScrollable: true,
+                  vehicles: state.vehicles,
+                  hasReachedMax: state.hasReachedMax,
+                  onScroll: () {
+                    BlocProvider.of<SearchFilterBloc>(context).add(
+                      SearchFilterSubmitted(isFromButton: false),
+                    );
+                  },
+                  paddinng: EdgeInsets.only(
+                    left: paddingSize,
+                    right: paddingSize,
+                    top: 10.sp,
+                    bottom: 30.sp,
+                  ),
+                );
               case SearchFilterStatus.failure:
                 return FetchError(
                   onPressedTryAgain: () {
@@ -67,4 +83,6 @@ class SearchPage extends StatelessWidget {
       ),
     );
   }
+
+  _showSearchBottomSheet(context) {}
 }

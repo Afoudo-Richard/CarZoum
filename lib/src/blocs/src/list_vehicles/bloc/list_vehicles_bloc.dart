@@ -12,10 +12,12 @@ const _duration = Duration(milliseconds: 300);
 
 class ListVehiclesBloc extends Bloc<ListVehiclesEvent, ListVehiclesState> {
   ListVehiclesBloc() : super(ListVehiclesState()) {
-    on<VehiclesFetched>(_onVehiclesFetched,
-        transformer: debounce(
-          _duration,
-        ));
+    on<VehiclesFetched>(
+      _onVehiclesFetched,
+      transformer: debounce(
+        _duration,
+      ),
+    );
     on<VehicleViewAdded>(_onVehicleViewAdded);
   }
 

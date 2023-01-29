@@ -24,28 +24,48 @@ class SimilarVehiclesSection extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
-          height: 2.h,
+        2.h.ph,
+        BlocBuilder<VehicleDetailBloc, VehicleDetailState>(
+          builder: (context, state) {
+            switch (state.listSimilarVehiclesStatus) {
+              case ListSimilarVehiclesStatus.initial:
+              case ListSimilarVehiclesStatus.refresh:
+                return VehiclesLoading(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 3.h,
+                    horizontal: paddingSize,
+                  ),
+                  itemCount: 10,
+                );
+
+              case ListSimilarVehiclesStatus.failure:
+                return FetchError(
+                  onPressedTryAgain: () {
+                    BlocProvider.of<VehicleDetailBloc>(context).add(
+                      VehiclesDetailSimilarVehiclesFetched(refresh: true),
+                    );
+                  },
+                );
+              case ListSimilarVehiclesStatus.success:
+                // return const SellerInfoVehicles();
+                return VehicleListing(
+                  vehicles: state.vehicles,
+                  hasReachedMax: state.hasReachedMax,
+                  onScroll: () {
+                    BlocProvider.of<VehicleDetailBloc>(context).add(
+                      VehiclesDetailSimilarVehiclesFetched(),
+                    );
+                  },
+                  paddinng: EdgeInsets.only(
+                    left: paddingSize,
+                    right: paddingSize,
+                    top: 10.sp,
+                    bottom: 30.sp,
+                  ),
+                );
+            }
+          },
         ),
-        // SizedBox(
-        //   height: 35.h,
-        //   child: ListView.separated(
-        //     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-        //     shrinkWrap: true,
-        //     scrollDirection: Axis.horizontal,
-        //     itemCount: listOfProducts.length,
-        //     itemBuilder: (BuildContext context, int index) {
-        //       return ProductItem(
-        //         product: listOfProducts[index],
-        //       );
-        //     },
-        //     separatorBuilder: (BuildContext context, int index) {
-        //       return SizedBox(
-        //         width: 5.w,
-        //       );
-        //     },
-        //   ),
-        // ),
       ],
     );
   }
