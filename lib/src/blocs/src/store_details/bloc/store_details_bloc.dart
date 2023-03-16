@@ -23,8 +23,8 @@ class StoreDetailsBloc extends Bloc<StoreDetailsEvent, StoreDetailsState> {
             storeAbout: StoreAbout.dirty(
               userBloc.state.user?.store?.about ?? "N/A",
             ),
-            storeWhatsappPhone:
-                StoreWhatsappPhone.dirty(userBloc.state.user?.phone ?? ""),
+            // storeWhatsappPhone:
+            //     StoreWhatsappPhone.dirty(userBloc.state.user?.phone ?? ""),
           ),
         ) {
     on<StoreNameChanged>(_onStoreNameChanged);

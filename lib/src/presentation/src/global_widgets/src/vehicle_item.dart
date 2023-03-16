@@ -36,7 +36,7 @@ class VehicleItem extends StatelessWidget {
           children: [
             SizedBox(
               width: 100.w,
-              height: 14.h,
+              height: 80.sp,
               child: Row(
                 children: [
                   Container(

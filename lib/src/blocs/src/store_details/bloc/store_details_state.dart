@@ -8,7 +8,7 @@ class StoreDetailsState extends Equatable {
   final StoreName storeName;
   final StoreLocation storeLocation;
   final StoreAbout storeAbout;
-  final StorePhone storePhone;
+  // final StorePhone storePhone;
   final FormzStatus formStatus;
   final StoreDetailsLogoStatus storeDetailsLogoStatus;
 
@@ -17,7 +17,7 @@ class StoreDetailsState extends Equatable {
     this.storeLocation = const StoreLocation.pure(),
     this.storeAbout = const StoreAbout.pure(),
     this.formStatus = FormzStatus.pure,
-    this.storePhone = const StorePhone.pure(),
+    // this.storePhone = const StorePhone.pure(),
     this.storeDetailsLogoStatus = StoreDetailsLogoStatus.initial,
   });
 
@@ -27,7 +27,7 @@ class StoreDetailsState extends Equatable {
         storeLocation,
         storeAbout,
         formStatus,
-        storePhone,
+        // storePhone,
         storeDetailsLogoStatus,
       ];
 
@@ -35,7 +35,7 @@ class StoreDetailsState extends Equatable {
     StoreName? storeName,
     StoreLocation? storeLocation,
     StoreAbout? storeAbout,
-    StorePhone? storePhone,
+    // StorePhone? storePhone,
     FormzStatus? formStatus,
     StoreDetailsLogoStatus? storeDetailsLogoStatus,
   }) {
@@ -43,7 +43,7 @@ class StoreDetailsState extends Equatable {
       storeName: storeName ?? this.storeName,
       storeLocation: storeLocation ?? this.storeLocation,
       storeAbout: storeAbout ?? this.storeAbout,
-      storePhone: storePhone ?? this.storePhone,
+      // storePhone: storePhone ?? this.storePhone,
       formStatus: formStatus ?? this.formStatus,
       storeDetailsLogoStatus:
           storeDetailsLogoStatus ?? this.storeDetailsLogoStatus,
