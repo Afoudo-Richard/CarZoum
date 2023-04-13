@@ -50,6 +50,7 @@ void main() async {
   );
 }
 
+
 registerParseServer() async {
   const keyApplicationId = 'Fg22Ebem2NQ53vltcN7psGw7IJ4ahn4g7m1mHQWN';
   const keyClientKey = 'fb2jMYFRVNd1ZczVQPKnHnCf4RYvjSOeIz3baFKI';

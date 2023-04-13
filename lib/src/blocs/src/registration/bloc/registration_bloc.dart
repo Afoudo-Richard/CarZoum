@@ -216,7 +216,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       ..firstname = firstname
       ..lastname = lastname
       ..store = userStore;
-    user.setAdd("devices", []);
+    // user.setAdd("devices", []);
 
     var response = await user.signUp();
 
